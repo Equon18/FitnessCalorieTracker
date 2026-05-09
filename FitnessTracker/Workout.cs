@@ -41,9 +41,60 @@
             Console.WriteLine("Workout saved.");
         }
 
+        // -----------------------------
+        // NEW: Edit existing workout
+        // RESPONSIBLE: Jisoo Yoon
+        // -----------------------------
+        public void EditWorkout()
+        {
+            Console.Write("Enter new workout name (leave blank to keep current): ");
+            string newName = Console.ReadLine() ?? "";
+            if (!string.IsNullOrWhiteSpace(newName))
+            {
+                this.workoutName = newName;
+            }
+
+            Console.Write("Enter new duration in minutes (-1 to keep current): ");
+            int newMinutes = this.readNumber();
+            if (newMinutes >= 0)
+            {
+                this.minutes = newMinutes;
+            }
+
+            Console.Write("Enter new calories burned (-1 to keep current): ");
+            int newCalories = this.readNumber();
+            if (newCalories >= 0)
+            {
+                this.caloriesBurned = newCalories;
+            }
+
+            Console.WriteLine("Workout updated.");
+        }
+
+        // -----------------------------
+        // Display workout
+        // -----------------------------
         public void DisplayWorkout()
         {
             Console.WriteLine(this.workoutName + " - " + this.minutes + " minutes - " + this.caloriesBurned + " calories burned");
+        }
+
+        // -----------------------------
+        // Getters for WorkoutName
+        // RESPONSIBLE: Jisoo YOon
+        // -----------------------------
+        public string GetWorkoutName()
+        {
+            return this.workoutName;
+        }
+
+        // -----------------------------
+        // Getters for Minutes
+        // RESPONSIBLE: Jisoo Yoon
+        // -----------------------------
+        public int GetMinutes()
+        {
+            return this.minutes;
         }
 
         public int GetCaloriesBurned()
@@ -51,6 +102,9 @@
             return this.caloriesBurned;
         }
 
+        // -----------------------------
+        // Helper: read number safely
+        // -----------------------------
         private int readNumber()
         {
             int number;
