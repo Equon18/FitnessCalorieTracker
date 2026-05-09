@@ -95,12 +95,18 @@
             }
         }
 
+        // ---------------------------------------------------------
+        // UPDATED CALORIE MENU (Week 4)
+        // RESPONSIBLE: Jisoo Yoon
+        // ---------------------------------------------------------
         private void handleCalorieMenu()
         {
             Console.WriteLine();
             Console.WriteLine("Calorie Menu");
             Console.WriteLine("1. Add Calorie Entry");
             Console.WriteLine("2. View Calorie History");
+            Console.WriteLine("3. Edit Calorie Entry");
+            Console.WriteLine("4. Delete Calorie Entry");
             Console.Write("Choose an option: ");
 
             int choice = this.readNumber();
@@ -115,18 +121,32 @@
             {
                 this.displayCalorieHistory();
             }
+            else if (choice == 3)
+            {
+                this.editCalorieEntry();
+            }
+            else if (choice == 4)
+            {
+                this.deleteCalorieEntry();
+            }   
             else
             {
                 Console.WriteLine("Invalid choice.");
             }
         }
 
+        // ---------------------------------------------------------
+        // UPDATED WORKOUT MENU (Week 4)
+        // RESPONSIBLE: Jisoo Yoon
+        // ---------------------------------------------------------
         private void handleWorkoutMenu()
         {
             Console.WriteLine();
             Console.WriteLine("Workout Menu");
             Console.WriteLine("1. Add Workout");
             Console.WriteLine("2. View Workout History");
+            Console.WriteLine("3. Edit Workout");
+            Console.WriteLine("4. Delete Workout");
             Console.Write("Choose an option: ");
 
             int choice = this.readNumber();
@@ -140,6 +160,14 @@
             else if (choice == 2)
             {
                 this.displayWorkoutHistory();
+            }
+            else if (choice == 3)
+            {
+                this.editWorkoutEntry();
+            }
+            else if (choice == 4)
+            {
+                this.deleteWorkoutEntry();
             }
             else
             {
@@ -178,6 +206,9 @@
             }
         }
 
+        // ---------------------------------------------------------
+        // DISPLAY METHODS
+        // ---------------------------------------------------------
         private void displayCalorieHistory()
         {
             if (this.calorieEntries.Count == 0)
@@ -232,6 +263,104 @@
             }
         }
 
+        // ---------------------------------------------------------
+        // NEW: EDIT + DELETE CALORIE ENTRY
+        // RESPONSIBLE: Jisoo Yoon
+        // ---------------------------------------------------------
+        private void editCalorieEntry()
+        {
+            if (this.calorieEntries.Count == 0)
+            {
+                Console.WriteLine("No calorie entries to edit.");
+                return;
+            }
+
+            this.displayCalorieHistory();
+            Console.Write("Enter entry number to edit: ");
+            int index = this.readNumber();
+
+            if (index >= 1 && index <= this.calorieEntries.Count)
+            {
+                this.calorieEntries[index - 1].EditEntry();
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry number.");
+            }
+        }
+
+        private void deleteCalorieEntry()
+        {
+            if (this.calorieEntries.Count == 0)
+            {
+                Console.WriteLine("No calorie entries to delete.");
+                return;
+            }
+
+            this.displayCalorieHistory();
+            Console.Write("Enter entry number to delete: ");
+            int index = this.readNumber();
+
+            if (index >= 1 && index <= this.calorieEntries.Count)
+            {
+                this.calorieEntries.RemoveAt(index - 1);
+                Console.WriteLine("Calorie entry deleted.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry number.");
+            }
+        }
+
+        // ---------------------------------------------------------
+        // NEW: EDIT + DELETE WORKOUT ENTRY
+        // RESPONSIBLE: Jisoo Yoon
+        // ---------------------------------------------------------
+        private void editWorkoutEntry()
+        {
+            if (this.workouts.Count == 0)
+            {
+                Console.WriteLine("No workouts to edit.");
+                return;
+            }
+
+            this.displayWorkoutHistory();
+            Console.Write("Enter workout number to edit: ");
+            int index = this.readNumber();
+
+            if (index >= 1 && index <= this.workouts.Count)
+            {
+                this.workouts[index - 1].EditWorkout();
+            }
+            else
+            {
+                Console.WriteLine("Invalid workout number.");
+            }
+        }
+
+        private void deleteWorkoutEntry()
+        {
+            if (this.workouts.Count == 0)
+            {
+                Console.WriteLine("No workouts to delete.");
+                return;
+            }
+
+            this.displayWorkoutHistory();
+            Console.Write("Enter workout number to delete: ");
+            int index = this.readNumber();
+
+            if (index >= 1 && index <= this.workouts.Count)
+            {
+                this.workouts.RemoveAt(index - 1);
+                Console.WriteLine("Workout deleted.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid workout number.");
+            }
+        }
+
         private void markReminderComplete()
         {
             if (this.reminders.Count == 0)
@@ -255,6 +384,9 @@
             }
         }
 
+        // ---------------------------------------------------------
+        // INPUT VALIDATION
+        // ---------------------------------------------------------
         private int readNumber()
         {
             int number;
