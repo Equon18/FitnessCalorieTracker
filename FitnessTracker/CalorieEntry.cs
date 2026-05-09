@@ -30,16 +30,57 @@
             Console.WriteLine("Calorie entry saved.");
         }
 
+        // -----------------------------
+        // NEW: Edit existing entry
+        // RESPONSIBLE: Jisoo Yoon
+        // -----------------------------
+        public void EditEntry()
+        {
+            Console.Write("Enter new food name (leave blank to keep current): ");
+            string newName = Console.ReadLine() ?? "";
+            if (!string.IsNullOrWhiteSpace(newName))
+            {
+                this.foodName = newName;
+            }
+
+            Console.Write("Enter new calories (-1 to keep current): ");
+            int newCalories = this.readNumber();
+            if (newCalories >= 0)
+            {
+                this.calories = newCalories;
+            }
+
+            Console.WriteLine("Calorie entry updated.");
+        }
+
+        // -----------------------------
+        // Display entry
+        // -----------------------------
         public void DisplayEntry()
         {
             Console.WriteLine(this.foodName + " - " + this.calories + " calories");
         }
 
+        // -----------------------------
+        // Getters for AppManager
+        // -----------------------------
         public int GetCalories()
         {
             return this.calories;
         }
 
+        // -----------------------------
+        // Getters for Get Food Name
+        // RESPONSIBLE: Jisoo Yoon
+        // -----------------------------
+        public string GetFoodName()
+        {
+            return this.foodName;
+        }
+
+        // -----------------------------
+        // Helper: read number safely
+        // -----------------------------
         private int readNumber()
         {
             int number;
