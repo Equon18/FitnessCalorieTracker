@@ -53,7 +53,7 @@
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Try again.");
+                    this.printError("Invalid choice. Try again.");
                 }
             }
         }
