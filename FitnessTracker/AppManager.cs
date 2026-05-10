@@ -59,25 +59,37 @@
         }
 
         private void showMainMenu()
-        {
+        { 
+            this.printHeader("Main Menu: Fitness & Calorie Tracker");
+            
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Fitness and Calorie Tracking System");
             Console.WriteLine();
-            Console.WriteLine("Fitness and Calorie Tracker");
-            Console.WriteLine("1. Profile");
-            Console.WriteLine("2. Calorie Tracking");
-            Console.WriteLine("3. Workout Tracking");
-            Console.WriteLine("4. Reminders");
-            Console.WriteLine("5. Daily Summary");
-            Console.WriteLine("6. Exit");
-            Console.Write("Choose an option: ");
+            Console.ResetColor();
+
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Select an option below: ");
+            Console.ResetColor();
+            this.printMenuOption(1, "Profile");
+            this.printMenuOption(2, "Calorie Tracking");
+            this.printMenuOption(3, "Workout Tracking");
+            this.printMenuOption(4, "Reminders");
+            this.printMenuOption(5, "Daily Summary");
+            this.printMenuOption(6, "Exit");
+
+            this.printFooter();
         }
 
         private void handleProfileMenu()
         {
-            Console.WriteLine();
-            Console.WriteLine("Profile Menu");
-            Console.WriteLine("1. Create Profile");
-            Console.WriteLine("2. View Profile");
-            Console.Write("Choose an option: ");
+            this.printHeader("Profile Menu");
+
+            this.printMenuOption(1, "Create Profile");
+            this.printMenuOption(2, "View Profile");
+
+            this.printFooter();
 
             int choice = this.readNumber();
 
@@ -101,13 +113,14 @@
         // ---------------------------------------------------------
         private void handleCalorieMenu()
         {
-            Console.WriteLine();
-            Console.WriteLine("Calorie Menu");
-            Console.WriteLine("1. Add Calorie Entry");
-            Console.WriteLine("2. View Calorie History");
-            Console.WriteLine("3. Edit Calorie Entry");
-            Console.WriteLine("4. Delete Calorie Entry");
-            Console.Write("Choose an option: ");
+            this.printHeader("Calorie Menu");
+
+            this.printMenuOption(1, "Add Calorie Entry");
+            this.printMenuOption(2, "View Calorie History");
+            this.printMenuOption(3, "Edit Calorie Entry");
+            this.printMenuOption(4, "Delete Calorie Entry");
+
+            this.printFooter();
 
             int choice = this.readNumber();
 
@@ -141,13 +154,14 @@
         // ---------------------------------------------------------
         private void handleWorkoutMenu()
         {
-            Console.WriteLine();
-            Console.WriteLine("Workout Menu");
-            Console.WriteLine("1. Add Workout");
-            Console.WriteLine("2. View Workout History");
-            Console.WriteLine("3. Edit Workout");
-            Console.WriteLine("4. Delete Workout");
-            Console.Write("Choose an option: ");
+            this.printHeader("Workout Menu");
+
+            this.printMenuOption(1, "Add Workout");
+            this.printMenuOption(2, "View Workout History");
+            this.printMenuOption(3, "Edit Workout");
+            this.printMenuOption(4, "Delete Workout");
+
+            this.printFooter();
 
             int choice = this.readNumber();
 
@@ -177,12 +191,13 @@
 
         private void handleReminderMenu()
         {
-            Console.WriteLine();
-            Console.WriteLine("Reminder Menu");
-            Console.WriteLine("1. Add Reminder");
-            Console.WriteLine("2. View Reminders");
-            Console.WriteLine("3. Mark Reminder Complete");
-            Console.Write("Choose an option: ");
+            this.printHeader("Reminder Menu");
+
+            this.printMenuOption(1, "Add Reminder");
+            this.printMenuOption(2, "View Reminders");
+            this.printMenuOption(3, "Mark Reminder Complete");
+
+            this.printFooter();
 
             int choice = this.readNumber();
 
@@ -202,7 +217,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid choice.");
+                this.printError("Invalid choice.");
             }
         }
 
@@ -213,16 +228,17 @@
         {
             if (this.calorieEntries.Count == 0)
             {
-                Console.WriteLine("No calorie entries yet.");
+                this.printError("No calorie entries yet.");
                 return;
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Calorie History");
+            this.printSectionTitle("Calorie History");
 
             for (int index = 0; index < this.calorieEntries.Count; index++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write((index + 1) + ". ");
+                Console.ResetColor();
                 this.calorieEntries[index].DisplayEntry();
             }
         }
@@ -231,34 +247,37 @@
         {
             if (this.workouts.Count == 0)
             {
-                Console.WriteLine("No workouts yet.");
+                this.printError("No workouts yet.");
                 return;
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Workout History");
+            this.printSectionTitle("Workout History");
 
             for (int index = 0; index < this.workouts.Count; index++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write((index + 1) + ". ");
+                Console.ResetColor();
                 this.workouts[index].DisplayWorkout();
             }
+
         }
 
         private void displayReminders()
         {
             if (this.reminders.Count == 0)
             {
-                Console.WriteLine("No reminders yet.");
+                this.printError("No reminders yet.");
                 return;
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Reminders");
+            this.printSectionTitle("Reminders");
 
             for (int index = 0; index < this.reminders.Count; index++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write((index + 1) + ". ");
+                Console.ResetColor();
                 this.reminders[index].DisplayReminder();
             }
         }
@@ -271,12 +290,14 @@
         {
             if (this.calorieEntries.Count == 0)
             {
-                Console.WriteLine("No calorie entries to edit.");
+                this.printError("No calorie entries to edit.");
                 return;
             }
 
             this.displayCalorieHistory();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter entry number to edit: ");
+                Console.ResetColor();
             int index = this.readNumber();
 
             if (index >= 1 && index <= this.calorieEntries.Count)
@@ -285,7 +306,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid entry number.");
+                this.printError("Invalid entry number.");
             }
         }
 
@@ -293,22 +314,24 @@
         {
             if (this.calorieEntries.Count == 0)
             {
-                Console.WriteLine("No calorie entries to delete.");
+                this.printError("No calorie entries to delete.");
                 return;
             }
 
             this.displayCalorieHistory();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter entry number to delete: ");
+            Console.ResetColor();
             int index = this.readNumber();
 
             if (index >= 1 && index <= this.calorieEntries.Count)
             {
                 this.calorieEntries.RemoveAt(index - 1);
-                Console.WriteLine("Calorie entry deleted.");
+                this.printSuccess("Calorie entry deleted.");
             }
             else
             {
-                Console.WriteLine("Invalid entry number.");
+                this.printError("Invalid entry number.");
             }
         }
 
@@ -320,12 +343,14 @@
         {
             if (this.workouts.Count == 0)
             {
-                Console.WriteLine("No workouts to edit.");
+                this.printError("No workouts to edit.");
                 return;
             }
 
             this.displayWorkoutHistory();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter workout number to edit: ");
+            Console.ResetColor();
             int index = this.readNumber();
 
             if (index >= 1 && index <= this.workouts.Count)
@@ -334,7 +359,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid workout number.");
+                this.printError("Invalid workout number.");
             }
         }
 
@@ -342,22 +367,24 @@
         {
             if (this.workouts.Count == 0)
             {
-                Console.WriteLine("No workouts to delete.");
+                this.printError("No workouts to delete.");
                 return;
             }
 
             this.displayWorkoutHistory();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter workout number to delete: ");
+            Console.ResetColor();
             int index = this.readNumber();
 
             if (index >= 1 && index <= this.workouts.Count)
             {
                 this.workouts.RemoveAt(index - 1);
-                Console.WriteLine("Workout deleted.");
+                this.printSuccess("Workout deleted.");
             }
             else
             {
-                Console.WriteLine("Invalid workout number.");
+                this.printError("Invalid workout number.");
             }
         }
 
@@ -365,13 +392,15 @@
         {
             if (this.reminders.Count == 0)
             {
-                Console.WriteLine("No reminders to complete.");
+                this.printError("No reminders to complete.");
                 return;
             }
 
             this.displayReminders();
 
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Enter reminder number: ");
+            Console.ResetColor();
             int reminderNumber = this.readNumber();
 
             if (reminderNumber >= 1 && reminderNumber <= this.reminders.Count)
@@ -380,7 +409,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid reminder number.");
+                this.printError("Invalid reminder number.");
             }
         }
 
@@ -393,10 +422,89 @@
 
             while (!int.TryParse(Console.ReadLine(), out number))
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Enter a valid number: ");
+                Console.ResetColor();
             }
 
             return number;
         }
+
+        // ---------------------------------------------------------
+        // STYLE HELPER METHODS
+        // ---------------------------------------------------------
+        private void printHeader(string title)
+        {
+           // Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("");
+            Console.WriteLine("        " + title.ToUpper());
+            Console.WriteLine("");
+            Console.ResetColor();
+
+            Console.WriteLine();
+        }
+
+        private void printFooter()
+        {
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Choose an option: ");
+            Console.ResetColor();
+        }
+
+        private void printMenuOption(int number, string text)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("  [" + number + "] ");
+            Console.ResetColor();
+
+            Console.WriteLine(text);
+        }
+
+        private void printSectionTitle(string title)
+        {
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("----- " + title + " -----");
+            Console.ResetColor();
+
+            Console.WriteLine();
+        }
+
+        private void printSuccess(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+        private void printError(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+        private void pauseScreen()
+        {
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Press Enter to continue...");
+            Console.ResetColor();
+
+            Console.ReadLine();
+        }
+
     }
 }
