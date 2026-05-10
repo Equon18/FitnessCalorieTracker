@@ -58,6 +58,8 @@
             }
         }
 
+        
+
         private void showMainMenu()
         { 
             CssStyleConsoleHelper.printHeader("Main Menu: Fitness & Calorie Tracker");
@@ -82,16 +84,43 @@
             CssStyleConsoleHelper.printFooter();
         }
 
+        private void printNavigationOptions(int optionCount)
+        {
+            CssStyleConsoleHelper.printMenuOption(optionCount + 1, "Main Menu");
+            CssStyleConsoleHelper.printMenuOption(optionCount + 2, "Exit");
+        }
+
+        private bool handleNavigationChoice(int choice, int optionCount)
+        {
+            if (choice == optionCount + 1)
+            {
+                return true;
+            }
+            else if (choice == optionCount + 2)
+            {
+                CssStyleConsoleHelper.printSuccess("Exiting program.");
+                Environment.Exit(0);
+            }
+
+            return false;
+        }
+
         private void handleProfileMenu()
         {
             CssStyleConsoleHelper.printHeader("Profile Menu");
 
             CssStyleConsoleHelper.printMenuOption(1, "Create Profile");
             CssStyleConsoleHelper.printMenuOption(2, "View Profile");
+            this.printNavigationOptions(2);
+            
 
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
+            if (this.handleNavigationChoice(choice, 2))
+            {
+                return;
+            }
 
             if (choice == 1)
             {
@@ -100,6 +129,15 @@
             else if (choice == 2)
             {
                 this.user.DisplayProfile();
+            }
+            else if (choice == 3)
+            {
+                return;
+            }
+            else if (choice == 4)
+            {
+                CssStyleConsoleHelper.printSuccess("Exiting program.");
+                Environment.Exit(0);
             }
             else
             {
@@ -119,11 +157,16 @@
             CssStyleConsoleHelper.printMenuOption(2, "View Calorie History");
             CssStyleConsoleHelper.printMenuOption(3, "Edit Calorie Entry");
             CssStyleConsoleHelper.printMenuOption(4, "Delete Calorie Entry");
+            this.printNavigationOptions(4);
 
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
-
+            
+            if (this.handleNavigationChoice(choice, 4))
+            {
+                return;
+            }
             if (choice == 1)
             {
                 CalorieEntry entry = new CalorieEntry();
@@ -160,10 +203,15 @@
             CssStyleConsoleHelper.printMenuOption(2, "View Workout History");
             CssStyleConsoleHelper.printMenuOption(3, "Edit Workout");
             CssStyleConsoleHelper.printMenuOption(4, "Delete Workout");
+            this.printNavigationOptions(4);
 
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
+                if (this.handleNavigationChoice(choice, 4))
+                {
+                    return;
+            }
 
             if (choice == 1)
             {
@@ -196,9 +244,15 @@
             CssStyleConsoleHelper.printMenuOption(1, "Add Reminder");
             CssStyleConsoleHelper.printMenuOption(2, "View Reminders");
             CssStyleConsoleHelper.printMenuOption(3, "Mark Reminder Complete");
+            this.printNavigationOptions(3);
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
+
+            if (this.handleNavigationChoice(choice, 3))
+            {
+                return;
+            }
 
             if (choice == 1)
             {
