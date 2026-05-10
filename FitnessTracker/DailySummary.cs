@@ -21,28 +21,27 @@
 
             int netCalories = totalCalories - totalBurned;
 
-            Console.WriteLine();
-            Console.WriteLine("Daily Summary");
-            Console.WriteLine("Calories Consumed: " + totalCalories);
-            Console.WriteLine("Calories Burned: " + totalBurned);
-            Console.WriteLine("Net Calories: " + netCalories);
+            
+            CssStyleConsoleHelper.printHeader("Daily Summary");
+            CssStyleConsoleHelper.printInfoLine("Calories Consumed: ", totalCalories.ToString());
+            CssStyleConsoleHelper.printInfoLine("Calories Burned: ", totalBurned.ToString());
+            CssStyleConsoleHelper.printInfoLine("Net Calories: ", netCalories.ToString());
 
             if (user.HasProfile())
             {
-                Console.WriteLine("Daily Goal: " + user.GetCalorieGoal());
-
+                CssStyleConsoleHelper.printInfoLine("Daily Goal: ", user.GetCalorieGoal().ToString());
                 if (netCalories <= user.GetCalorieGoal())
                 {
-                    Console.WriteLine("Goal Status: On track");
+                    CssStyleConsoleHelper.printSuccess("Goal Status: On track");
                 }
                 else
                 {
-                    Console.WriteLine("Goal Status: Over goal");
+                    CssStyleConsoleHelper.printError("Goal Status: Over goal");
                 }
             }
             else
             {
-                Console.WriteLine("Goal Status: Create a profile to compare with your goal.");
+                CssStyleConsoleHelper.printError("Goal Status: Create a profile to compare with your goal.");
             }
         }
     }

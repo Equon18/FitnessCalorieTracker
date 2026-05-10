@@ -73,6 +73,15 @@ namespace FitnessCalorieTracker
             Console.ResetColor();
         }
 
+        public static void printInfoLine(string label, string value)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(label);
+            Console.ResetColor();
+
+            Console.WriteLine(value);
+        }
+
         public static void pauseScreen()
         {
             Console.WriteLine();
