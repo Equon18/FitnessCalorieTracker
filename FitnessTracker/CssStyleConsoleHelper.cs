@@ -46,6 +46,26 @@ namespace FitnessCalorieTracker
             Console.WriteLine(text);
         }
 
+        public static void printNavigationOptions(int optionCount)
+        {
+            CssStyleConsoleHelper.printMenuOption(optionCount + 1, "Main Menu");
+            CssStyleConsoleHelper.printMenuOption(optionCount + 2, "Exit");
+        }
+        public static bool handleNavigationChoice(int choice, int optionCount)
+        {
+            if (choice == optionCount + 1)
+            {
+                return true;
+            }
+            else if (choice == optionCount + 2)
+            {
+                CssStyleConsoleHelper.printSuccess("Exiting program.");
+                Environment.Exit(0);
+            }
+
+            return false;
+        }
+
         public static void printSectionTitle(string title)
         {
             Console.WriteLine();

@@ -17,15 +17,64 @@
 
         public void CreateWorkout()
         {
-            Console.Write("Enter workout name: ");
-            this.workoutName = Console.ReadLine() ?? "";
+            
+            CssStyleConsoleHelper.printHeader("Exercise Type Menu");
+     
 
-            Console.Write("Enter workout duration in minutes: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Select an option below: ");
+            Console.WriteLine();
+            Console.ResetColor();
+
+            CssStyleConsoleHelper.printMenuOption(1, "Walking");
+            CssStyleConsoleHelper.printMenuOption(2, "Running");
+            CssStyleConsoleHelper.printMenuOption(3, "Weightlifting");
+            CssStyleConsoleHelper.printMenuOption(4, "Cycling");
+            CssStyleConsoleHelper.printMenuOption(5, "Swimming");
+            CssStyleConsoleHelper.printMenuOption(6, "Yoga");
+            CssStyleConsoleHelper.printNavigationOptions(6);
+
+            CssStyleConsoleHelper.printFooter();
+
+            int workoutChoice = this.readNumber();
+
+            if (CssStyleConsoleHelper.handleNavigationChoice(workoutChoice, 6))
+            {
+                return;
+            }
+
+            if (workoutChoice == 1)
+
+            {
+                this.workoutName = "Walking";
+            }
+            else if (workoutChoice == 2)
+            {
+                this.workoutName = "Running";
+            }
+            else if (workoutChoice == 3)
+            {
+                this.workoutName = "Weightlifting";
+            }
+            else if (workoutChoice == 4)
+            {
+                this.workoutName = "Cycling";
+            }
+            else if (workoutChoice == 5)
+            {
+                this.workoutName = "Swimming";
+            }
+            else if (workoutChoice == 6)
+            {
+                this.workoutName = "Yoga";
+            }
+
+            CssStyleConsoleHelper.printInfoLine("Enter workout duration in minutes: ", "");
             this.minutes = this.readNumber();
 
             while (this.minutes < 0)
             {
-                Console.Write("Minutes cannot be negative. Enter minutes again: ");
+                CssStyleConsoleHelper.printError("Minutes cannot be negative. Enter minutes again: ");
                 this.minutes = this.readNumber();
             }
 
@@ -34,11 +83,11 @@
 
             while (this.caloriesBurned < 0)
             {
-                Console.Write("Calories burned cannot be negative. Enter calories again: ");
+                CssStyleConsoleHelper.printError("Calories burned cannot be negative. Enter calories again: ");
                 this.caloriesBurned = this.readNumber();
             }
 
-            Console.WriteLine("Workout saved.");
+            CssStyleConsoleHelper.printSuccess("Workout saved.");
         }
 
         // -----------------------------

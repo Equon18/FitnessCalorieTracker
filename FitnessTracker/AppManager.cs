@@ -74,50 +74,32 @@
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Select an option below: ");
             Console.ResetColor();
-            CssStyleConsoleHelper.printMenuOption(1, "Profile");
-            CssStyleConsoleHelper.printMenuOption(2, "Calorie Tracking");
-            CssStyleConsoleHelper.printMenuOption(3, "Workout Tracking");
-            CssStyleConsoleHelper.printMenuOption(4, "Reminders");
-            CssStyleConsoleHelper.printMenuOption(5, "Daily Summary");
+            CssStyleConsoleHelper.printMenuOption(1, "Profile Menu");
+            CssStyleConsoleHelper.printMenuOption(2, "Calorie Tracking Menu");
+            CssStyleConsoleHelper.printMenuOption(3, "Workout Menu");
+            CssStyleConsoleHelper.printMenuOption(4, "Reminders Menu");
+            CssStyleConsoleHelper.printMenuOption(5, "Daily Summary Menu");
             CssStyleConsoleHelper.printMenuOption(6, "Exit");
 
             CssStyleConsoleHelper.printFooter();
         }
 
-        private void printNavigationOptions(int optionCount)
-        {
-            CssStyleConsoleHelper.printMenuOption(optionCount + 1, "Main Menu");
-            CssStyleConsoleHelper.printMenuOption(optionCount + 2, "Exit");
-        }
 
-        private bool handleNavigationChoice(int choice, int optionCount)
-        {
-            if (choice == optionCount + 1)
-            {
-                return true;
-            }
-            else if (choice == optionCount + 2)
-            {
-                CssStyleConsoleHelper.printSuccess("Exiting program.");
-                Environment.Exit(0);
-            }
 
-            return false;
-        }
-
+ 
         private void handleProfileMenu()
         {
             CssStyleConsoleHelper.printHeader("Profile Menu");
 
             CssStyleConsoleHelper.printMenuOption(1, "Create Profile");
             CssStyleConsoleHelper.printMenuOption(2, "View Profile");
-            this.printNavigationOptions(2);
+            CssStyleConsoleHelper.printNavigationOptions(2);
             
 
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
-            if (this.handleNavigationChoice(choice, 2))
+            if (CssStyleConsoleHelper.handleNavigationChoice(choice, 2))
             {
                 return;
             }
@@ -157,13 +139,13 @@
             CssStyleConsoleHelper.printMenuOption(2, "View Calorie History");
             CssStyleConsoleHelper.printMenuOption(3, "Edit Calorie Entry");
             CssStyleConsoleHelper.printMenuOption(4, "Delete Calorie Entry");
-            this.printNavigationOptions(4);
+            CssStyleConsoleHelper.printNavigationOptions(4);
 
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
             
-            if (this.handleNavigationChoice(choice, 4))
+            if (CssStyleConsoleHelper.handleNavigationChoice(choice, 4))
             {
                 return;
             }
@@ -202,19 +184,25 @@
             CssStyleConsoleHelper.printMenuOption(1, "Add Workout");
             CssStyleConsoleHelper.printMenuOption(2, "View Workout History");
             CssStyleConsoleHelper.printMenuOption(3, "Edit Workout");
-            CssStyleConsoleHelper.printMenuOption(4, "Delete Workout");
-            this.printNavigationOptions(4);
+            CssStyleConsoleHelper.printMenuOption(4, "Delete Workout"); 
+            CssStyleConsoleHelper.printNavigationOptions(4);
 
             CssStyleConsoleHelper.printFooter();
 
-            int choice = this.readNumber();
-                if (this.handleNavigationChoice(choice, 4))
-                {
-                    return;
+            int choice = this.readNumber(); 
+            if (CssStyleConsoleHelper.handleNavigationChoice(choice, 4))
+            {
+                return;
             }
 
             if (choice == 1)
             {
+                if (!this.user.HasProfile())
+                {
+                    CssStyleConsoleHelper.printError("Please create a user profile before adding workout details.");
+                    return;
+                }
+
                 Workout workout = new Workout();
                 workout.CreateWorkout();
                 this.workouts.Add(workout);
@@ -244,12 +232,12 @@
             CssStyleConsoleHelper.printMenuOption(1, "Add Reminder");
             CssStyleConsoleHelper.printMenuOption(2, "View Reminders");
             CssStyleConsoleHelper.printMenuOption(3, "Mark Reminder Complete");
-            this.printNavigationOptions(3);
+            CssStyleConsoleHelper.printNavigationOptions(3);
             CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
 
-            if (this.handleNavigationChoice(choice, 3))
+            if (CssStyleConsoleHelper.handleNavigationChoice(choice, 3))
             {
                 return;
             }
@@ -297,6 +285,11 @@
 
         private void displayWorkoutHistory()
         {
+            if (!this.user.HasProfile())
+            {
+                CssStyleConsoleHelper.printError("Please create a user profile before managing workout details.");
+                return;
+            }
             if (this.workouts.Count == 0)
             {
                 CssStyleConsoleHelper.printError("No workouts yet.");
@@ -391,6 +384,11 @@
         // ---------------------------------------------------------
         private void editWorkoutEntry()
         {
+            if (!this.user.HasProfile())
+            {
+                CssStyleConsoleHelper.printError("Please create a user profile before managing workout details.");
+                return;
+            }
             if (this.workouts.Count == 0)
             {
                 CssStyleConsoleHelper.printError("No workouts to edit.");
@@ -415,6 +413,11 @@
 
         private void deleteWorkoutEntry()
         {
+            if (!this.user.HasProfile())
+            {
+                CssStyleConsoleHelper.printError("Please create a user profile before managing workout details.");
+                return;
+            }
             if (this.workouts.Count == 0)
             {
                 CssStyleConsoleHelper.printError("No workouts to delete.");

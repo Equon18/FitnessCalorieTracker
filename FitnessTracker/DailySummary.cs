@@ -29,6 +29,29 @@ namespace FitnessCalorieTracker
             CssStyleConsoleHelper.printInfoLine("Calories Burned: ", totalBurned.ToString());
             CssStyleConsoleHelper.printInfoLine("Net Calories: ", netCalories.ToString());
 
+            if (workouts.Count == 0)
+            {
+                CssStyleConsoleHelper.printInfoLine("Work Out History: ", "No workout history found");
+            }
+            else
+            {
+                CssStyleConsoleHelper.printInfoLine("Work Out History: ", "");
+
+                for (int index = 0; index < workouts.Count; index++)
+                {
+                    Workout workout = workouts[index];
+
+                    string workoutInfo = workout.GetWorkoutName()
+                                         + " - "
+                                         + workout.GetMinutes()
+                                         + " minutes - "
+                                         + workout.GetCaloriesBurned()
+                                         + " calories burned";
+
+                    CssStyleConsoleHelper.printInfoLine((index + 1) + ". ", workoutInfo);
+                }
+            }
+
             if (user.HasProfile())
             {
                 CssStyleConsoleHelper.printInfoLine("Daily Goal: ", user.GetCalorieGoal().ToString());
@@ -44,24 +67,6 @@ namespace FitnessCalorieTracker
             else
             {
                 CssStyleConsoleHelper.printError("Please create a user profile to view your daily summary.");
-            }
-            this.returnToMainMenu();
-        }
-
-        private void returnToMainMenu()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Select an option below: ");
-            Console.ResetColor();
-            CssStyleConsoleHelper.printMenuOption(1, "Main Menu");
-            CssStyleConsoleHelper.printFooter();
-
-            int choice;
-
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice != 1)
-            {
-                CssStyleConsoleHelper.printError("Invalid choice. Enter 1 to return to the Main Menu.");
-
             }
         }
     }
