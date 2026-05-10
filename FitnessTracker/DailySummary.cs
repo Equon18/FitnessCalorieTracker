@@ -1,4 +1,6 @@
-﻿namespace FitnessCalorieTracker
+﻿using System.Diagnostics;
+
+namespace FitnessCalorieTracker
 {
     // DailySummary class
     // Responsible: Jupiter Lebrun
@@ -21,7 +23,7 @@
 
             int netCalories = totalCalories - totalBurned;
 
-            
+
             CssStyleConsoleHelper.printHeader("Daily Summary");
             CssStyleConsoleHelper.printInfoLine("Calories Consumed: ", totalCalories.ToString());
             CssStyleConsoleHelper.printInfoLine("Calories Burned: ", totalBurned.ToString());
@@ -41,7 +43,25 @@
             }
             else
             {
-                CssStyleConsoleHelper.printError("Goal Status: Create a profile to compare with your goal.");
+                CssStyleConsoleHelper.printError("Please create a user profile to view your daily summary.");
+            }
+            this.returnToMainMenu();
+        }
+
+        private void returnToMainMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Select an option below: ");
+            Console.ResetColor();
+            CssStyleConsoleHelper.printMenuOption(1, "Main Menu");
+            CssStyleConsoleHelper.printFooter();
+
+            int choice;
+
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice != 1)
+            {
+                CssStyleConsoleHelper.printError("Invalid choice. Enter 1 to return to the Main Menu.");
+
             }
         }
     }
