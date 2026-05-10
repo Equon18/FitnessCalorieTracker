@@ -49,18 +49,18 @@
                 }
                 else if (choice == 6)
                 {
-                    Console.WriteLine("Exiting program.");
+                    CssStyleConsoleHelper.printSuccess("Exiting program.");
                 }
                 else
                 {
-                    this.printError("Invalid choice. Try again.");
+                    CssStyleConsoleHelper.printError("Invalid choice. Try again.");
                 }
             }
         }
 
         private void showMainMenu()
         { 
-            this.printHeader("Main Menu: Fitness & Calorie Tracker");
+            CssStyleConsoleHelper.printHeader("Main Menu: Fitness & Calorie Tracker");
             
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -72,24 +72,24 @@
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Select an option below: ");
             Console.ResetColor();
-            this.printMenuOption(1, "Profile");
-            this.printMenuOption(2, "Calorie Tracking");
-            this.printMenuOption(3, "Workout Tracking");
-            this.printMenuOption(4, "Reminders");
-            this.printMenuOption(5, "Daily Summary");
-            this.printMenuOption(6, "Exit");
+            CssStyleConsoleHelper.printMenuOption(1, "Profile");
+            CssStyleConsoleHelper.printMenuOption(2, "Calorie Tracking");
+            CssStyleConsoleHelper.printMenuOption(3, "Workout Tracking");
+            CssStyleConsoleHelper.printMenuOption(4, "Reminders");
+            CssStyleConsoleHelper.printMenuOption(5, "Daily Summary");
+            CssStyleConsoleHelper.printMenuOption(6, "Exit");
 
-            this.printFooter();
+            CssStyleConsoleHelper.printFooter();
         }
 
         private void handleProfileMenu()
         {
-            this.printHeader("Profile Menu");
+            CssStyleConsoleHelper.printHeader("Profile Menu");
 
-            this.printMenuOption(1, "Create Profile");
-            this.printMenuOption(2, "View Profile");
+            CssStyleConsoleHelper.printMenuOption(1, "Create Profile");
+            CssStyleConsoleHelper.printMenuOption(2, "View Profile");
 
-            this.printFooter();
+            CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
 
@@ -103,7 +103,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid choice.");
+               CssStyleConsoleHelper.printError("Invalid choice.");
             }
         }
 
@@ -113,14 +113,14 @@
         // ---------------------------------------------------------
         private void handleCalorieMenu()
         {
-            this.printHeader("Calorie Menu");
+            CssStyleConsoleHelper.printHeader("Calorie Menu");
 
-            this.printMenuOption(1, "Add Calorie Entry");
-            this.printMenuOption(2, "View Calorie History");
-            this.printMenuOption(3, "Edit Calorie Entry");
-            this.printMenuOption(4, "Delete Calorie Entry");
+            CssStyleConsoleHelper.printMenuOption(1, "Add Calorie Entry");
+            CssStyleConsoleHelper.printMenuOption(2, "View Calorie History");
+            CssStyleConsoleHelper.printMenuOption(3, "Edit Calorie Entry");
+            CssStyleConsoleHelper.printMenuOption(4, "Delete Calorie Entry");
 
-            this.printFooter();
+            CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
 
@@ -144,7 +144,7 @@
             }   
             else
             {
-                Console.WriteLine("Invalid choice.");
+                CssStyleConsoleHelper.printError("Invalid choice.");
             }
         }
 
@@ -154,14 +154,14 @@
         // ---------------------------------------------------------
         private void handleWorkoutMenu()
         {
-            this.printHeader("Workout Menu");
+            CssStyleConsoleHelper.printHeader("Workout Menu");
 
-            this.printMenuOption(1, "Add Workout");
-            this.printMenuOption(2, "View Workout History");
-            this.printMenuOption(3, "Edit Workout");
-            this.printMenuOption(4, "Delete Workout");
+            CssStyleConsoleHelper.printMenuOption(1, "Add Workout");
+            CssStyleConsoleHelper.printMenuOption(2, "View Workout History");
+            CssStyleConsoleHelper.printMenuOption(3, "Edit Workout");
+            CssStyleConsoleHelper.printMenuOption(4, "Delete Workout");
 
-            this.printFooter();
+            CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
 
@@ -185,19 +185,18 @@
             }
             else
             {
-                Console.WriteLine("Invalid choice.");
+                CssStyleConsoleHelper.printError("Invalid choice.");
             }
         }
 
         private void handleReminderMenu()
         {
-            this.printHeader("Reminder Menu");
+            CssStyleConsoleHelper.printHeader("Reminder Menu");
 
-            this.printMenuOption(1, "Add Reminder");
-            this.printMenuOption(2, "View Reminders");
-            this.printMenuOption(3, "Mark Reminder Complete");
-
-            this.printFooter();
+            CssStyleConsoleHelper.printMenuOption(1, "Add Reminder");
+            CssStyleConsoleHelper.printMenuOption(2, "View Reminders");
+            CssStyleConsoleHelper.printMenuOption(3, "Mark Reminder Complete");
+            CssStyleConsoleHelper.printFooter();
 
             int choice = this.readNumber();
 
@@ -217,7 +216,7 @@
             }
             else
             {
-                this.printError("Invalid choice.");
+                CssStyleConsoleHelper.printError("Invalid choice.");
             }
         }
 
@@ -228,12 +227,11 @@
         {
             if (this.calorieEntries.Count == 0)
             {
-                this.printError("No calorie entries yet.");
+                CssStyleConsoleHelper.printError("No calorie entries yet.");
                 return;
             }
 
-            this.printSectionTitle("Calorie History");
-
+            CssStyleConsoleHelper.printSectionTitle("Calorie History");
             for (int index = 0; index < this.calorieEntries.Count; index++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -247,12 +245,11 @@
         {
             if (this.workouts.Count == 0)
             {
-                this.printError("No workouts yet.");
+                CssStyleConsoleHelper.printError("No workouts yet.");
                 return;
             }
 
-            this.printSectionTitle("Workout History");
-
+            CssStyleConsoleHelper.printSectionTitle("Workout History");
             for (int index = 0; index < this.workouts.Count; index++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -267,12 +264,11 @@
         {
             if (this.reminders.Count == 0)
             {
-                this.printError("No reminders yet.");
+                CssStyleConsoleHelper.printError("No reminders yet.");
                 return;
             }
 
-            this.printSectionTitle("Reminders");
-
+            CssStyleConsoleHelper.printSectionTitle("Reminders");
             for (int index = 0; index < this.reminders.Count; index++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -290,7 +286,7 @@
         {
             if (this.calorieEntries.Count == 0)
             {
-                this.printError("No calorie entries to edit.");
+                CssStyleConsoleHelper.printError("No calorie entries to edit.");
                 return;
             }
 
@@ -306,7 +302,7 @@
             }
             else
             {
-                this.printError("Invalid entry number.");
+                CssStyleConsoleHelper.printError("Invalid entry number.");
             }
         }
 
@@ -314,7 +310,7 @@
         {
             if (this.calorieEntries.Count == 0)
             {
-                this.printError("No calorie entries to delete.");
+                CssStyleConsoleHelper.printError("No calorie entries to delete.");
                 return;
             }
 
@@ -327,11 +323,11 @@
             if (index >= 1 && index <= this.calorieEntries.Count)
             {
                 this.calorieEntries.RemoveAt(index - 1);
-                this.printSuccess("Calorie entry deleted.");
+                CssStyleConsoleHelper.printSuccess("Calorie entry deleted.");
             }
             else
             {
-                this.printError("Invalid entry number.");
+                CssStyleConsoleHelper.printError("Invalid entry number.");
             }
         }
 
@@ -343,7 +339,7 @@
         {
             if (this.workouts.Count == 0)
             {
-                this.printError("No workouts to edit.");
+                CssStyleConsoleHelper.printError("No workouts to edit.");
                 return;
             }
 
@@ -359,7 +355,7 @@
             }
             else
             {
-                this.printError("Invalid workout number.");
+                CssStyleConsoleHelper.printError("Invalid workout number.");
             }
         }
 
@@ -367,7 +363,7 @@
         {
             if (this.workouts.Count == 0)
             {
-                this.printError("No workouts to delete.");
+                CssStyleConsoleHelper.printError("No workouts to delete.");
                 return;
             }
 
@@ -380,11 +376,11 @@
             if (index >= 1 && index <= this.workouts.Count)
             {
                 this.workouts.RemoveAt(index - 1);
-                this.printSuccess("Workout deleted.");
+                CssStyleConsoleHelper.printSuccess("Workout deleted.");
             }
             else
             {
-                this.printError("Invalid workout number.");
+                CssStyleConsoleHelper.printError("Invalid workout number.");
             }
         }
 
@@ -392,7 +388,7 @@
         {
             if (this.reminders.Count == 0)
             {
-                this.printError("No reminders to complete.");
+                CssStyleConsoleHelper.printError("No reminders to complete.");
                 return;
             }
 
@@ -409,7 +405,7 @@
             }
             else
             {
-                this.printError("Invalid reminder number.");
+                CssStyleConsoleHelper.printError("Invalid reminder number.");
             }
         }
 
@@ -428,82 +424,6 @@
             }
 
             return number;
-        }
-
-        // ---------------------------------------------------------
-        // STYLE HELPER METHODS
-        // ---------------------------------------------------------
-        private void printHeader(string title)
-        {
-           // Console.Clear();
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("");
-            Console.WriteLine("        " + title.ToUpper());
-            Console.WriteLine("");
-            Console.ResetColor();
-
-            Console.WriteLine();
-        }
-
-        private void printFooter()
-        {
-            Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Choose an option: ");
-            Console.ResetColor();
-        }
-
-        private void printMenuOption(int number, string text)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("  [" + number + "] ");
-            Console.ResetColor();
-
-            Console.WriteLine(text);
-        }
-
-        private void printSectionTitle(string title)
-        {
-            Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("----- " + title + " -----");
-            Console.ResetColor();
-
-            Console.WriteLine();
-        }
-
-        private void printSuccess(string message)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine();
-            Console.WriteLine(message);
-            Console.ResetColor();
-        }
-
-        private void printError(string message)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine();
-            Console.WriteLine(message);
-            Console.ResetColor();
-        }
-
-        private void pauseScreen()
-        {
-            Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("Press Enter to continue...");
-            Console.ResetColor();
-
-            Console.ReadLine();
         }
 
     }
