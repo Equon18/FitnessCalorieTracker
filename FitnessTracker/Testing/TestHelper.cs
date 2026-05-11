@@ -3,6 +3,7 @@ using System.IO;
 
 // TestHelper.cs
 // Responsible: All Team Members
+
 namespace FitnessCalorieTrackerTests
 {
     public static class TestHelper
