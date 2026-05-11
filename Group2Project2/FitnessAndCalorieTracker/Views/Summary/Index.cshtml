@@ -1,0 +1,52 @@
+Contributor: Jisoo Yoon
+
+@model FitnessAndCalorieTracker.Models.DailySummaryViewModel
+@{
+    ViewData["Title"] = "Daily Summary";
+}
+
+<h2>Daily Summary</h2>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="form-inline">
+        <label class="mr-2">Select Date:</label>
+        <input type="date" name="date" value="@Model.Date.ToString("yyyy-MM-dd")" class="form-control mr-2" />
+        <button type="submit" class="btn btn-primary">View</button>
+    </div>
+</form>
+
+<div class="card mt-4">
+    <div class="card-header bg-info text-white">
+        <h4>Summary for @Model.Date.ToString("MMMM dd, yyyy")</h4>
+    </div>
+
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4">Total Calories Consumed</dt>
+            <dd class="col-sm-8">@Model.TotalCaloriesConsumed</dd>
+
+            <dt class="col-sm-4">Total Calories Burned</dt>
+            <dd class="col-sm-8">@Model.TotalCaloriesBurned</dd>
+
+            <dt class="col-sm-4">Net Calories</dt>
+            <dd class="col-sm-8">@Model.NetCalories</dd>
+
+            <dt class="col-sm-4">Daily Calorie Goal</dt>
+            <dd class="col-sm-8">@Model.DailyGoal</dd>
+
+            <dt class="col-sm-4">Goal Status</dt>
+            <dd class="col-sm-8">
+                @if (Model.GoalStatus == "On Track")
+                {
+                    <span class="text-success font-weight-bold">On Track</span>
+                }
+                else
+                {
+                    <span class="text-danger font-weight-bold">Over Limit</span>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<a asp-controller="AppManager" asp-action="Index" class="btn btn-secondary mt-3">Back to Main Menu</a>
