@@ -1,0 +1,44 @@
+Contributor: Jisoo Yoon
+
+@model IEnumerable<FitnessAndCalorieTracker.Models.CalorieEntry>
+@{
+    ViewData["Title"] = "Calorie Entries";
+}
+
+<h2>Calorie Tracking</h2>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="form-inline">
+        <input type="text" name="searchTerm" class="form-control mr-2" placeholder="Search food name..." />
+        <input type="date" name="date" class="form-control mr-2" />
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="Index" class="btn btn-secondary ml-2">Clear</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Food Name</th>
+            <th>Calories</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FoodName</td>
+                <td>@item.Calories</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-success">Add New Entry</a>
