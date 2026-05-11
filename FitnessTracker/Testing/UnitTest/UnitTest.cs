@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 // UnitTest.cs
 // Responsible: All Team Members
+
 namespace FitnessCalorieTrackerTests
 {
     public class UnitTest
@@ -61,7 +62,7 @@ namespace FitnessCalorieTrackerTests
             TestHelper.SetConsoleInput("Banana\n105\n");
             entry.CreateEntry();
 
-            // AppManager 내부 리스트에 직접 추가
+            // Directly add entry to AppManager's internal list
             var calorieListField = typeof(AppManager)
                 .GetField("calorieEntries", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
