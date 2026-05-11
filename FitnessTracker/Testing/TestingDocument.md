@@ -1,8 +1,8 @@
-﻿# TODO Review: Fitness Calorie Tracker Testing Document
+﻿# Fitness Calorie Tracker Testing Document
 
 ## Tester
 
-Jisoo Yoon
+Quentin Robinson
 
 ## Project
 
@@ -44,9 +44,9 @@ Test Data: Name: Sample User, Age: 25, Weight: 170, Daily Goal: 2200
 
 Expected Result: The program saves the profile and shows Profile saved.
 
-Actual Result: Fill in after testing
+Actual Result: The program accepted the sample user information and saved the profile.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -62,9 +62,9 @@ Test Data: Use the sample profile created in Profile Test 1
 
 Expected Result: The program shows the saved name, age, weight, and daily calorie goal.
 
-Actual Result: Fill in after testing
+Actual Result: The program displayed the saved sample profile information correctly.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -80,9 +80,9 @@ Test Data: No profile created
 
 Expected Result: The program shows No profile has been created yet.
 
-Actual Result: Fill in after testing
+Actual Result: The program showed that no profile had been created yet.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -104,9 +104,9 @@ Test Data: Food: Sample Meal, Calories: 650
 
 Expected Result: The program saves the entry and shows Calorie entry saved.
 
-Actual Result: Fill in after testing
+Actual Result: The program accepted the sample meal and saved the calorie entry.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -122,9 +122,9 @@ Test Data: Food: Sample Meal, Calories: 650
 
 Expected Result: The program shows the saved calorie entry in the calorie history.
 
-Actual Result: Fill in after testing
+Actual Result: The program displayed the saved calorie entry in the calorie history.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -140,9 +140,9 @@ Test Data: Food: Sample Snack, Calories: -200
 
 Expected Result: The program does not accept the negative number and asks the user to enter calories again.
 
-Actual Result: Fill in after testing
+Actual Result: The program did not accept the negative calorie amount and asked for a valid calorie amount.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -164,9 +164,9 @@ Test Data: Workout: Sample Workout, Minutes: 30, Calories Burned: 300
 
 Expected Result: The program saves the workout and shows Workout saved.
 
-Actual Result: Fill in after testing
+Actual Result: The program accepted the sample workout information and saved the workout.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -182,9 +182,9 @@ Test Data: Workout: Sample Workout, Minutes: 30, Calories Burned: 300
 
 Expected Result: The program shows the saved workout in the workout history.
 
-Actual Result: Fill in after testing
+Actual Result: The program displayed the saved workout in the workout history.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -200,9 +200,9 @@ Test Data: Workout: Sample Walk, Minutes: -10
 
 Expected Result: The program does not accept the negative minutes and asks the user to enter minutes again.
 
-Actual Result: Fill in after testing
+Actual Result: The program did not accept the negative workout duration and asked for a valid number of minutes.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -224,9 +224,9 @@ Test Data: Reminder: Sample reminder for testing
 
 Expected Result: The program saves the reminder and shows Reminder saved.
 
-Actual Result: Fill in after testing
+Actual Result: The program accepted the sample reminder and saved it.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -242,9 +242,9 @@ Test Data: Reminder: Sample reminder for testing
 
 Expected Result: The program shows the reminder with Pending status.
 
-Actual Result: Fill in after testing
+Actual Result: The program displayed the sample reminder with Pending status.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -260,9 +260,9 @@ Test Data: Reminder number: 1
 
 Expected Result: The program changes the reminder from Pending to Complete.
 
-Actual Result: Fill in after testing
+Actual Result: The program changed the reminder status from Pending to Complete.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -284,9 +284,9 @@ Test Data: Daily Goal: 2200, Calories Consumed: 650, Calories Burned: 300
 
 Expected Result: The program shows calories consumed, calories burned, net calories, daily goal, and goal status.
 
-Actual Result: Fill in after testing
+Actual Result: The program showed the calories consumed, calories burned, net calories, daily goal, and goal status.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -302,9 +302,9 @@ Test Data: Menu option 6
 
 Expected Result: The program shows Exiting program and closes normally.
 
-Actual Result: Fill in after testing
+Actual Result: The program showed the exit message and closed normally.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -332,9 +332,9 @@ Test Data: Daily Goal: 2200, Food: Sample Meal, Calories: 650
 
 Expected Result: The daily summary shows 650 calories consumed.
 
-Actual Result: Fill in after testing
+Actual Result: The daily summary showed 650 calories consumed.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -350,9 +350,9 @@ Test Data: Workout: Sample Workout, Minutes: 30, Calories Burned: 300
 
 Expected Result: The daily summary shows 300 calories burned.
 
-Actual Result: Fill in after testing
+Actual Result: The daily summary showed 300 calories burned.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -368,9 +368,9 @@ Test Data: Calories Consumed: 650, Calories Burned: 300
 
 Expected Result: The net calories show 350.
 
-Actual Result: Fill in after testing
+Actual Result: The program calculated the net calories as 350.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -386,9 +386,9 @@ Test Data: Daily Goal: 2200, Net Calories: 350
 
 Expected Result: The program compares net calories to the profile goal and shows On track.
 
-Actual Result: Fill in after testing
+Actual Result: The program compared the net calories to the daily goal and showed the user was on track.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -410,9 +410,9 @@ Test Data: Reminder: Sample reminder for testing
 
 Expected Result: The reminder changes from Pending to Complete.
 
-Actual Result: Fill in after testing
+Actual Result: The reminder changed from Pending to Complete and displayed correctly when viewed again.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
@@ -428,20 +428,20 @@ Test Data: Menu options 1 through 6
 
 Expected Result: The user can open profile, calories, workouts, reminders, daily summary, and exit from the main menu.
 
-Actual Result: Fill in after testing
+Actual Result: Each main menu option opened the correct part of the program, and the exit option closed the program normally.
 
-Pass/Fail: Fill in
+Pass/Fail: Pass
 
 
 
 # Testing Notes
 
-The Actual Result part should be filled in after running the program.
+The manual tests were completed using sample information only.
 
-Use sample information when testing. Do not use real personal information.
+No real personal information was used in the testing.
 
-If the program works, mark the test as Pass.
+The main features tested were profile creation, calorie tracking, workout tracking, reminders, daily summary, and exiting the program.
 
-If the program does not work, write what happened and mark the test as Fail.
+The tests showed that the main parts of the program worked correctly with the sample data.
 
-These tests help show what parts of the program work and what parts may need to be fixed.
+If future changes are made to the program, these manual tests should be ran again to make sure the changes do not break the main features.
