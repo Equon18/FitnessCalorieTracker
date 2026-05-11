@@ -1,0 +1,46 @@
+Contributor: Jisoo Yoon
+
+@model IEnumerable<FitnessAndCalorieTracker.Models.Workout>
+@{
+    ViewData["Title"] = "Workout Entries";
+}
+
+<h2>Workout Tracking</h2>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <div class="form-inline">
+        <input type="text" name="searchTerm" class="form-control mr-2" placeholder="Search workout type..." />
+        <input type="date" name="date" class="form-control mr-2" />
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="Index" class="btn btn-secondary ml-2">Clear</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Workout Type</th>
+            <th>Duration (min)</th>
+            <th>Calories Burned</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.WorkoutType</td>
+                <td>@item.DurationMinutes</td>
+                <td>@item.CaloriesBurned</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-success">Add New Workout</a>
