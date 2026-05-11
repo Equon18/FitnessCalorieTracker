@@ -1,1 +1,1 @@
-Contributor: Jupiter Leburn
+Contributor: Jupiter Lebrun
